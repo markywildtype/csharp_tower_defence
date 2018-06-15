@@ -10,7 +10,7 @@ namespace TowerDefence
       Tower tower = new Tower();
       Map map = new Map(8, 5);
 
-      Point point = new Point(4, 2);
+      // Point point = new Point(4, 2);
       // bool isOnMap = map.OnMap(point);
       // Console.WriteLine(isOnMap);
       //
@@ -30,7 +30,27 @@ namespace TowerDefence
       // Console.WriteLine(point2 is Point); //true
       // Console.WriteLine(point is MapLocation); //false
       try {
-        MapLocation outOfBounds = new MapLocation(9, 6, map);
+        // MapLocation outOfBounds = new MapLocation(9, 6, map);
+
+        //A path made out of an array of map locations:
+        Path path = new Path(
+            new [] {
+              new MapLocation(0, 2, map),
+              new MapLocation(1, 2, map),
+              new MapLocation(2, 2, map),
+              new MapLocation(3, 2, map),
+              new MapLocation(4, 2, map),
+              new MapLocation(5, 2, map),
+              new MapLocation(6, 2, map),
+              new MapLocation(7, 2, map)
+        });
+
+        // MapLocation location = path.GetLocationAt(8);
+        // if(location != null)
+        // {
+        //   Console.WriteLine(location.X + ", " + location.Y);
+        // }
+
       }
       catch(OutOfBoundsException ex)
       {
@@ -40,10 +60,11 @@ namespace TowerDefence
       {
         Console.WriteLine("Unhandled TowerDefenceException");
       }
-      catch(Exception)
+      catch(Exception ex)
       {
-        Console.WriteLine("Unhandled Exception");
+        Console.WriteLine("Unhandled Exception: " + ex);
       }
+
     }
 
   }
