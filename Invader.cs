@@ -23,7 +23,7 @@ namespace TowerDefence
     //Simplify computed property:
     public MapLocation Location => _path.GetLocationAt(_pathStep);
 
-    public int Health { get; private set; } = 100;
+    public int Health { get; private set; } = 20;
 
     public bool HasScored
     {
