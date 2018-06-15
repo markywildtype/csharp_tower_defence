@@ -19,6 +19,11 @@ namespace TowerDefence
       return (pathStep < _path.Length) ? _path[pathStep] : null;
     }
 
+    public MapLocation[] GetPath()
+    {
+      return _path;
+    }
+
   }
 
 }

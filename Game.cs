@@ -7,7 +7,6 @@ namespace TowerDefence
 
     public static void Main(string[] args)
     {
-      Tower tower = new Tower();
       Map map = new Map(8, 5);
 
       // Point point = new Point(4, 2);
@@ -44,6 +43,8 @@ namespace TowerDefence
               new MapLocation(6, 2, map),
               new MapLocation(7, 2, map)
         });
+
+        Tower tower = new Tower(new MapLocation(3, 4, map));
 
         // MapLocation location = path.GetLocationAt(8);
         // if(location != null)
