@@ -9,29 +9,7 @@ namespace TowerDefence
     {
       Map map = new Map(8, 5);
 
-      // Point point = new Point(4, 2);
-      // bool isOnMap = map.OnMap(point);
-      // Console.WriteLine(isOnMap);
-      //
-      // point = new Point(8, 5);
-      // isOnMap = map.OnMap(point);
-      // Console.WriteLine(isOnMap);
-
-      // Console.WriteLine(point.DistanceTo(5, 5));
-      //
-      // //Test Overloaded method and Inherited class:
-      // MapLocation point2 = new MapLocation(7, 4);
-      // Console.WriteLine(point.DistanceTo(point2));
-      // Console.WriteLine(map.OnMap(point2));
-      //
-      // //Type checking:
-      // Console.WriteLine(point2 is MapLocation); //true
-      // Console.WriteLine(point2 is Point); //true
-      // Console.WriteLine(point is MapLocation); //false
       try {
-        // MapLocation outOfBounds = new MapLocation(9, 6, map);
-
-        //A path made out of an array of map locations:
         Path path = new Path(
             new [] {
               new MapLocation(0, 2, map),
@@ -44,13 +22,27 @@ namespace TowerDefence
               new MapLocation(7, 2, map)
         });
 
-        Tower tower = new Tower(new MapLocation(3, 4, map));
+        Invader[] invaders = {
+          new Invader(path),
+          new Invader(path),
+          new Invader(path),
+          new Invader(path)
+        };
 
-        // MapLocation location = path.GetLocationAt(8);
-        // if(location != null)
-        // {
-        //   Console.WriteLine(location.X + ", " + location.Y);
-        // }
+        Tower[] towers = {
+          new Tower(new MapLocation(1, 3, map)),
+          new Tower(new MapLocation(3, 3, map)),
+          new Tower(new MapLocation(5, 3, map))
+        };
+
+        Level level1 = new Level(invaders)
+        {
+          Towers = towers
+        };
+
+        bool playerWon = level1.Play();
+
+        Console.WriteLine(playerWon ? "Player has repelled all invaders!" : "Invaders have taken the castle!");
 
       }
       catch(OutOfBoundsException ex)
