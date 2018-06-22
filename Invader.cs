@@ -9,6 +9,8 @@ namespace TowerDefence
     //Private field - starts at 0 - all invaders start on the first step
     private int _pathStep = 0;
 
+    protected virtual int StepSize { get; } = 1;
+
     //Properties:
     //Auto-property:
     // public MapLocation Location { get; private set; }
@@ -23,7 +25,7 @@ namespace TowerDefence
     //Simplify computed property:
     public MapLocation Location => _path.GetLocationAt(_pathStep);
 
-    public int Health { get; private set; } = 20;
+    public virtual int Health { get; protected set; } = 20;
 
     public bool HasScored
     {
@@ -44,9 +46,13 @@ namespace TowerDefence
     }
 
     //Methods:
-    public void Move() => _pathStep++;
+    public void Move() => _pathStep += StepSize;
 
-    public void DecreaseHealth(int factor) => Health -= factor;
+    public virtual void DecreaseHealth(int factor)
+    {
+      Health -= factor;
+      Console.WriteLine("Hit one of the invaders!");
+    }
 
     // private MapLocation _location;
 
